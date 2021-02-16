@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from numpy import arange, log
+from numpy import arange, log, isnan
 from crosses import getCrosses
 
 # returns two arrays: x-values, generated in the range, and y-values = func(x) on this range
@@ -17,6 +17,13 @@ def drawGraph(x_val, y_val):
 def getAllNecessaryData():
     print("Welcome!")
     return list(map(lambda v: float(v), input("Input please the start value, finish value and tab for the function y=ln(x)/x: ").split(' ')))
+
+# prints all dots (x, y) 
+def printDots(x_val, y_val):
+    print("All dots in this interval: ")
+    for i in range(len(x_val)):
+        if not isnan(y_val[i]) and abs(y_val[i]) != float('inf'):
+            print('(' + str(x_val[i]) + ', ' + str(y_val[i]) + ')')
 
 # prints crosses with coordinate axes
 def printCrosses(crossesX, crossY):
@@ -42,5 +49,6 @@ func = lambda x: log(x) / x
 (x, y) = getFunctionArrays(func, start, end, tab)
 (crossesX, crossY) = getCrosses(func, x, y)
 
+printDots(x, y)
 printCrosses(crossesX, crossY)
 drawGraph(x, y)
