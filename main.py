@@ -4,7 +4,7 @@ from crosses import getCrosses
 
 # returns two arrays: x-values, generated in the range, and y-values = func(x) on this range
 def getFunctionArrays(func, start, end, tab):
-    x_val = tab * arange(start / tab, end / tab)
+    x_val = tab * arange(start / tab, end / tab) 
     y_val = func(x_val)
     return (x_val, y_val)
 
@@ -35,7 +35,7 @@ def printCrosses(crossesX, crossY):
         print("There is no crosses with OY")
 
 # function from the variant: y = ln(x) / x
-func = lambda x: x**2 + 2
+func = lambda x: log(x) / x
 
 [start, end, tab] = getAllNecessaryData()
 
